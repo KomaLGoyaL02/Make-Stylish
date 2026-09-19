@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Make Stylish — Footwear Store</title>
+<style>
+:root{
+  --ink:#111;
+  --muted:#6b6b6b;
+  --line:#e8e6e2;
+  --soft:#f6f4f1;
+  --accent:#b86b43;
+  --white:#fff;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fff;font-size:14px}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.top{background:#111;color:#fff;text-align:center;padding:8px 12px;font-size:10px;letter-spacing:.13em;font-weight:700}
+.nav{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);z-index:20}
+.logo{font-weight:900;font-size:23px;letter-spacing:-.07em}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:25px}
+.links a{color:#222;text-decoration:none;font-size:13px;font-weight:650;transition:.2s}
+.links a:hover{color:var(--accent)}
+.icons{display:flex;gap:6px}
+.icon{border:0;background:transparent;font-size:18px;position:relative;width:36px;height:36px;border-radius:50%}
+.icon:hover{background:var(--soft)}
+.count{position:absolute;right:0;top:0;background:var(--accent);color:#fff;border-radius:50%;font-size:9px;width:15px;height:15px;display:grid;place-items:center}
+.hero{min-height:590px;background:linear-gradient(90deg,rgba(10,10,10,.78),rgba(10,10,10,.15)),url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1800&q=88') center/cover;display:flex;align-items:center;color:#fff;padding:70px 8%}
+.hero>div{max-width:720px}
+.hero h1{font-size:clamp(52px,8vw,92px);line-height:.87;max-width:700px;margin:14px 0 22px;letter-spacing:-.075em}
+.hero p{font-size:16px;max-width:470px;color:#eee;line-height:1.7;margin-bottom:28px}
+.btn{border:1px solid var(--ink);border-radius:6px;padding:13px 21px;background:var(--ink);color:#fff;font-weight:750;font-size:12px;letter-spacing:.04em;transition:.2s}
+.btn:hover{transform:translateY(-1px);opacity:.92}
+.btn.light{background:#fff;color:#111;border-color:#fff}
+.btn.outline{background:#fff;color:#111;border-color:#111}
+section{padding:72px 5%;max-width:1440px;margin:auto}
+.head{display:flex;align-items:end;justify-content:space-between;margin-bottom:26px}
+.head h2{font-size:30px;margin:0;letter-spacing:-.045em}
+.head a{color:#111;text-decoration:none;font-weight:750;font-size:11px;letter-spacing:.08em}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cat{height:390px;position:relative;overflow:hidden;background:#eee;border-radius:var(--radius);cursor:pointer}
+.cat img{width:100%;height:100%;object-fit:cover;transition:.45s}
+.cat:hover img{transform:scale(1.035)}
+.cat:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+.cat div{position:absolute;z-index:2;bottom:24px;left:24px;color:#fff}
+.cat h3{font-size:27px;margin:0 0 5px;letter-spacing:-.03em}
+.cat span{font-size:12px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{min-width:0}
+.pic{height:325px;background:#f4f2ef;overflow:hidden;position:relative;border-radius:10px}
+.pic img{width:100%;height:100%;object-fit:cover;transition:.35s}
+.card:hover .pic img{transform:scale(1.035)}
+.tag{position:absolute;left:11px;top:11px;background:#fff;border-radius:4px;padding:6px 9px;font-size:9px;font-weight:850;letter-spacing:.06em}
+.heart{position:absolute;right:11px;top:10px;background:#fff;border:0;border-radius:50%;width:34px;height:34px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.card h3{font-size:14px;margin:12px 0 5px;line-height:1.35}
+.price{font-weight:800}.old{text-decoration:line-through;color:#999;font-weight:400;margin-left:6px;font-size:12px}.stars{font-size:11px;margin-top:6px}
+.promo{background:var(--soft);display:grid;grid-template-columns:1.1fr 1fr;min-height:360px;overflow:hidden;border-radius:var(--radius)}
+.promo img{width:100%;height:100%;object-fit:cover}
+.promoText{padding:55px;display:flex;flex-direction:column;justify-content:center}
+.promoText small{letter-spacing:.15em;font-weight:800;font-size:10px}
+.promoText h2{font-size:47px;line-height:.95;margin:12px 0}
+.promoText p{color:#666;line-height:1.6;max-width:400px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.review{border:1px solid var(--line);padding:24px;border-radius:10px}
+.review p{line-height:1.7;color:#555;margin:14px 0 20px}.review b{font-size:13px}
+.newsletter{background:#111;color:#fff;max-width:none;text-align:center;padding-left:5%;padding-right:5%}
+.newsletter h2{font-size:36px;margin:0 0 8px}.newsletter p{color:#bbb}
+.form{display:flex;max-width:500px;margin:24px auto 0}.form input{flex:1;padding:14px;border:0;border-radius:5px 0 0 5px}.form .btn{border-radius:0 5px 5px 0}
+.footer{background:#111;color:#999;padding:55px 5%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:35px;border-top:1px solid #292929}
+.footer h4{color:#fff;font-size:12px;letter-spacing:.1em}.footer a{display:block;color:#999;text-decoration:none;margin:11px 0;font-size:12px}.footer p{max-width:300px;line-height:1.6;font-size:12px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:30}
+.drawer{position:absolute;right:0;top:0;height:100%;width:min(430px,100%);background:#fff;padding:25px;overflow:auto;box-shadow:-10px 0 30px rgba(0,0,0,.12)}
+.close{float:right;border:0;background:none;font-size:25px;line-height:1}
+.drawer h2{margin-top:48px;font-size:28px;letter-spacing:-.04em}
+.cartItem{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cartItem img{width:75px;height:85px;object-fit:cover;border-radius:7px}
+.cartItem button{border:0;background:none;padding:0;margin-top:7px;color:#777;font-size:12px}
+.total{display:flex;justify-content:space-between;font-size:18px;font-weight:800;margin:22px 0}
+.page{display:none}.page.active{display:block}
+.listing{padding-top:45px}.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:27px}
+.filters select,.filters input{padding:11px 12px;border:1px solid var(--line);background:#fff;border-radius:6px;outline:none}
+.filters input{min-width:210px}.filters select:focus,.filters input:focus{border-color:#999}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:40;place-items:center}
+.modalBox{background:#fff;border-radius:12px;width:min(500px,92%);padding:30px;max-height:90vh;overflow:auto}
+.modalBox input,.modalBox textarea,.modalBox select{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #ddd;border-radius:6px}
+.pd{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;padding:55px 7%;max-width:1300px;margin:auto}
+.pdImg{height:560px;background:#f5f3f0;border-radius:12px;overflow:hidden}.pdImg img{width:100%;height:100%;object-fit:cover}
+.sizes{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}.size{background:#fff;border:1px solid #ccc;padding:10px 17px;border-radius:5px}.size.selected{background:#111;color:#fff}
+.qty{display:flex;align-items:center;gap:14px;margin:18px 0}.qty button{width:34px;height:34px;border:1px solid #ddd;background:#fff;border-radius:5px}
+.empty{text-align:center;padding:60px;color:#777}
+@media(max-width:850px){
+ .links{display:none}.nav{padding:0 4%;height:66px}.products{grid-template-columns:repeat(2,1fr)}
+ .cats,.reviews,.promo,.pd,.footer{grid-template-columns:1fr}.cat{height:310px}.pic{height:275px}
+ .promo img{height:300px}.pdImg{height:420px}.hero{min-height:520px}
+}
+@media(max-width:500px){
+ section{padding:52px 4%}.products{gap:12px}.pic{height:225px}.head h2{font-size:26px}
+ .hero{padding:45px 6%}.hero h1{font-size:55px}.promoText{padding:38px}.promoText h2{font-size:40px}
+ .filters input{width:100%;min-width:0}.filters select{flex:1}
+}
+</style>
+</head>
+<body>
+<div class="top">FREE SHIPPING ON ORDERS ABOVE ₹999 &nbsp; • &nbsp; EASY 7-DAY RETURNS</div>
+<nav class="nav"><div class="logo">MAKE<span>STYLISH</span></div><div class="links"><a href="#" onclick="showPage('home')">Home</a><a href="#" onclick="showPage('shop')">Shop</a><a href="#" onclick="filterCat('Men')">Men</a><a href="#" onclick="filterCat('Women')">Women</a><a href="#" onclick="filterCat('Kids')">Kids</a><a href="#" onclick="openModal('about')">About</a></div><div class="icons"><button class="icon" onclick="openModal('search')">⌕</button><button class="icon" onclick="openModal('login')">♙</button><button class="icon" onclick="openCart()">♡<span class="count" id="cartCount">0</span></button></div></nav>
+
+<main id="home" class="page active">
+<div class="hero"><div><div style="letter-spacing:.2em;font-size:12px;font-weight:800">THE NEW SEASON EDIT</div><h1>STEP INTO<br>STYLE.</h1><p>Modern footwear for every wardrobe — from everyday essentials to statement pairs.</p><button class="btn light" onclick="showPage('shop')">SHOP THE COLLECTION →</button></div></div>
+<section><div class="head"><h2>Shop by Category</h2><a href="#" onclick="showPage('shop')">VIEW ALL</a></div><div class="cats">
+<div class="cat" onclick="filterCat('Men')"><img src="https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=900&q=80"><div><h3>Men</h3><span>Explore collection →</span></div></div>
+<div class="cat" onclick="filterCat('Women')"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=80"><div><h3>Women</h3><span>Explore collection →</span></div></div>
+<div class="cat" onclick="filterCat('Kids')"><img src="https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=900&q=80"><div><h3>Kids</h3><span>Explore collection →</span></div></div>
+</div></section>
+<section style="background:#fafafa"><div class="head"><h2>Trending Now</h2><a href="#" onclick="showPage('shop')">SHOP ALL</a></div><div class="products" id="trending"></div></section>
+<section><div class="promo"><img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=1100&q=85"><div class="promoText"><small>WEEKEND EDIT</small><h2>UP TO 40% OFF</h2><p>Fresh pairs. Limited-time prices. Your next favorite is waiting.</p><button class="btn" onclick="showPage('shop')">SHOP SALE</button></div></div></section>
+<section><div class="head"><h2>Best Sellers</h2><a href="#" onclick="showPage('shop')">VIEW ALL</a></div><div class="products" id="best"></div></section>
+<section><div class="head"><h2>Customer Reviews</h2></div><div class="reviews"><div class="review"><div class="stars">★★★★★</div><p>“The sneakers look even better in person. Super comfortable for all-day wear.”</p><b>— Riya S.</b></div><div class="review"><div class="stars">★★★★★</div><p>“Beautiful packaging, quick delivery and the fit was perfect. Will order again.”</p><b>— Arjun K.</b></div><div class="review"><div class="stars">★★★★★</div><p>“Finally found stylish everyday footwear for my daughter without overspending.”</p><b>— Neha M.</b></div></div></section>
+<section class="newsletter"><h2>Stay in the loop.</h2><p>Get new drops, offers and style inspiration in your inbox.</p><div class="form"><input placeholder="Your email address"><button class="btn light" onclick="alert('Thanks for subscribing!')">SUBSCRIBE</button></div></section>
+</main>
+
+<main id="shop" class="page listing"><section><div class="head"><h2>All Footwear</h2><span id="resultCount"></span></div><div class="filters"><select id="category" onchange="renderShop()"><option value="">All Categories</option><option>Men</option><option>Women</option><option>Kids</option></select><select id="type" onchange="renderShop()"><option value="">All Types</option><option>Sneakers</option><option>Sports Shoes</option><option>Heels</option><option>Bellies</option><option>Flats</option><option>Wedges & Platforms</option><option>Loafers</option><option>Formal Shoes</option><option>Sandals</option><option>Slippers</option><option>Boots</option><option>Kids Sports</option><option>Kids Casual</option><option>Kids Sneakers</option><option>Kids Bellies</option><option>Kids Sandals</option><option>Kids Boots</option><option>School Shoes</option></select><select id="sort" onchange="renderShop()"><option value="popular">Popularity</option><option value="new">Newest</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select><input id="search" oninput="renderShop()" placeholder="Search footwear…"></div><div class="categoryChips" style="display:flex;gap:8px;flex-wrap:wrap;margin:-8px 0 28px"><button class="btn outline" onclick="filterType('Heels')">Heels</button><button class="btn outline" onclick="filterType('Bellies')">Bellies</button><button class="btn outline" onclick="filterType('Flats')">Flats</button><button class="btn outline" onclick="filterType('Formal Shoes')">Formal</button><button class="btn outline" onclick="filterType('Loafers')">Loafers</button><button class="btn outline" onclick="filterType('Sports Shoes')">Sports</button><button class="btn outline" onclick="filterType('Sandals')">Sandals</button><button class="btn outline" onclick="filterType('Kids Sneakers')">Kids Shoes</button><button class="btn outline" onclick="filterType('')">All</button></div><div class="products" id="shopGrid"></div></section></main>
+
+<main id="product" class="page"><div class="pd"><div class="pdImg"><img id="pdImg"></div><div><div class="stars" id="pdStars"></div><h1 id="pdName"></h1><h2 id="pdPrice"></h2><p id="pdDesc" style="color:#666;line-height:1.7"></p><hr style="border:0;border-top:1px solid #eee"><b>SELECT SIZE</b><div class="sizes" id="sizes"></div><div class="qty"><b>Quantity</b><button onclick="changeQty(-1)">−</button><span id="qty">1</span><button onclick="changeQty(1)">+</button></div><button class="btn" style="width:100%" onclick="addCurrent()">ADD TO CART</button><button class="btn outline" style="width:100%;margin-top:10px" onclick="buyNow()">BUY NOW</button><p style="font-size:12px;color:#777;margin-top:18px">✓ Easy 7-day returns &nbsp; ✓ Secure payments &nbsp; ✓ Quality checked</p></div></div></main>
+
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer"><button class="close" onclick="closeCart()">×</button><h2>Your Cart</h2><div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">₹0</span></div><button class="btn" style="width:100%" onclick="checkout()">CHECKOUT</button></aside></div>
+
+<div class="modal" id="modal"><div class="modalBox"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<footer class="footer"><div><div class="logo" style="color:#fff">MAKE<span>STYLISH</span></div><p>Footwear for every step, every mood, every day.</p></div><div><h4>SHOP</h4><a href="#" onclick="filterCat('Men')">Men</a><a href="#" onclick="filterCat('Women')">Women</a><a href="#" onclick="filterCat('Kids')">Kids</a><a href="#" onclick="showPage('shop')">All Footwear</a></div><div><h4>HELP</h4><a href="#" onclick="openModal('contact')">Contact</a><a href="#" onclick="openModal('orders')">My Orders</a><a href="#" onclick="openModal('shipping')">Shipping & Returns</a></div><div><h4>ACCOUNT</h4><a href="#" onclick="openModal('login')">Login / Signup</a><a href="#" onclick="openModal('wishlist')">Wishlist</a></div></footer>
+<script>
+const products=[
+{id:1,name:'Aero Knit Runner',cat:'Men',type:'Sports Shoes',price:2499,old:3299,tag:'BESTSELLER',rating:4.8,img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85'},
+{id:2,name:'Cloud Street Sneaker',cat:'Women',type:'Sneakers',price:2899,old:3999,tag:'NEW',rating:4.9,img:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=85'},
+{id:3,name:'Urban Classic Low',cat:'Men',type:'Sneakers',price:2199,old:2999,tag:'TRENDING',rating:4.7,img:'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=800&q=85'},
+{id:4,name:'Luna Comfort Sandal',cat:'Women',type:'Sandals',price:1599,old:2199,tag:'',rating:4.6,img:'https://images.unsplash.com/photo-1562273138-f46be4ebdf33?auto=format&fit=crop&w=800&q=85'},
+{id:5,name:'Tiny Steps Runner',cat:'Kids',type:'Kids Sports',price:1299,old:1699,tag:'NEW',rating:4.8,img:'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=85'},
+{id:6,name:'Cozy Home Slides',cat:'Women',type:'Slippers',price:999,old:1299,tag:'SALE',rating:4.5,img:'https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=800&q=85'},
+{id:7,name:'Ridge Leather Boot',cat:'Men',type:'Boots',price:3499,old:4499,tag:'',rating:4.7,img:'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&w=800&q=85'},
+{id:8,name:'Bloom Everyday Sneaker',cat:'Kids',type:'Kids Casual',price:1399,old:1899,tag:'TRENDING',rating:4.6,img:'https://images.unsplash.com/photo-1554130841-11f2b46d3f32?auto=format&fit=crop&w=800&q=85'},
+{id:9,name:'Elegant Stiletto Heel',cat:'Women',type:'Heels',price:2499,old:3499,tag:'NEW',rating:4.8,img:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=85'},
+{id:10,name:'Classic Pointed Belly',cat:'Women',type:'Bellies',price:1799,old:2399,tag:'BESTSELLER',rating:4.7,img:'https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=800&q=85'},
+{id:11,name:'Everyday Women Flats',cat:'Women',type:'Flats',price:1299,old:1799,tag:'',rating:4.6,img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=800&q=85'},
+{id:12,name:'Block Heel Sandal',cat:'Women',type:'Wedges & Platforms',price:1999,old:2799,tag:'TRENDING',rating:4.8,img:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=85'},
+{id:13,name:'Women Casual Loafers',cat:'Women',type:'Loafers',price:1899,old:2499,tag:'',rating:4.5,img:'https://images.unsplash.com/photo-1582897085656-c636d006a246?auto=format&fit=crop&w=800&q=85'},
+{id:14,name:'Executive Formal Shoe',cat:'Men',type:'Formal Shoes',price:2999,old:3999,tag:'BESTSELLER',rating:4.8,img:'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=85'},
+{id:15,name:'Classic Men Loafer',cat:'Men',type:'Loafers',price:2399,old:3199,tag:'NEW',rating:4.7,img:'https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=800&q=85'},
+{id:16,name:'Men Daily Sandal',cat:'Men',type:'Sandals',price:1199,old:1599,tag:'SALE',rating:4.5,img:'https://images.unsplash.com/photo-1562273138-f46be4ebdf33?auto=format&fit=crop&w=800&q=85'},
+{id:17,name:'Men Comfort Slipper',cat:'Men',type:'Slippers',price:799,old:1099,tag:'',rating:4.4,img:'https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=800&q=85'},
+{id:18,name:'Little Star School Shoes',cat:'Kids',type:'School Shoes',price:999,old:1299,tag:'BESTSELLER',rating:4.7,img:'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=85'},
+{id:19,name:'Kids Party Bellies',cat:'Kids',type:'Kids Bellies',price:1099,old:1499,tag:'NEW',rating:4.6,img:'https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=800&q=85'},
+{id:20,name:'Kids Sandal Fun',cat:'Kids',type:'Kids Sandals',price:899,old:1199,tag:'',rating:4.5,img:'https://images.unsplash.com/photo-1562273138-f46be4ebdf33?auto=format&fit=crop&w=800&q=85'},
+{id:21,name:'Kids Winter Boot',cat:'Kids',type:'Kids Boots',price:1499,old:1999,tag:'SALE',rating:4.6,img:'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&w=800&q=85'},
+{id:22,name:'Kids Light-Up Sneaker',cat:'Kids',type:'Kids Sneakers',price:1599,old:2099,tag:'TRENDING',rating:4.8,img:'https://images.unsplash.com/photo-1554130841-11f2b46d3f32?auto=format&fit=crop&w=800&q=85'}];
+let cart=[], current=null, qty=1;
+function card(p){return `<div class="card"><div class="pic"><img src="${p.img}" alt="${p.name}">${p.tag?`<span class="tag">${p.tag}</span>`:''}<button class="heart" onclick="toggleWish(event,${p.id})">♡</button></div><h3 onclick="openProduct(${p.id})" style="cursor:pointer">${p.name}</h3><div class="price">₹${p.price.toLocaleString()} <span class="old">₹${p.old.toLocaleString()}</span></div><div class="stars">★★★★★ <span style="color:#777">${p.rating}</span></div></div>`}
+function renderHome(){document.getElementById('trending').innerHTML=products.slice(0,4).map(card).join('');document.getElementById('best').innerHTML=products.slice(4,8).map(card).join('')}
+function renderShop(){let c=document.getElementById('category').value,t=document.getElementById('type').value,s=document.getElementById('search').value.toLowerCase(),sort=document.getElementById('sort').value;let a=products.filter(p=>(!c||p.cat===c)&&(!t||p.type===t)&&p.name.toLowerCase().includes(s));if(sort==='low')a.sort((x,y)=>x.price-y.price);if(sort==='high')a.sort((x,y)=>y.price-x.price);if(sort==='new')a.sort((x,y)=>y.id-x.id);document.getElementById('shopGrid').innerHTML=a.map(card).join('')||'<div class="empty">No footwear found. Try another filter.</div>';document.getElementById('resultCount').textContent=`${a.length} products`}
+function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);if(id==='shop')renderShop()}
+function filterCat(c){document.getElementById('category').value=c;document.getElementById('type').value='';showPage('shop')}
+function filterType(t){document.getElementById('type').value=t;document.getElementById('category').value='';showPage('shop')}
+function openProduct(id){current=products.find(p=>p.id===id);qty=1;document.getElementById('pdImg').src=current.img;document.getElementById('pdName').textContent=current.name;document.getElementById('pdPrice').textContent='₹'+current.price.toLocaleString();document.getElementById('pdStars').textContent='★★★★★  '+current.rating;document.getElementById('pdDesc').textContent='Designed for comfort and everyday style, '+current.name+' combines a clean silhouette with a versatile finish. Perfect for your daily rotation.';document.getElementById('qty').textContent=1;document.getElementById('sizes').innerHTML=[6,7,8,9,10,11].map(x=>`<button class="size" onclick="selectSize(this)">${x}</button>`).join('');showPage('product')}
+function selectSize(el){document.querySelectorAll('.size').forEach(x=>x.classList.remove('selected'));el.classList.add('selected')}
+function changeQty(n){qty=Math.max(1,qty+n);document.getElementById('qty').textContent=qty}
+function addCurrent(){let item=cart.find(x=>x.id===current.id);if(item)item.qty+=qty;else cart.push({...current,qty});updateCart();alert('Added to cart!')}
+function buyNow(){addCurrent();openCart()}
+function updateCart(){document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0);document.getElementById('cartItems').innerHTML=cart.length?cart.map(x=>`<div class="cartItem"><img src="${x.img}"><div style="flex:1"><b>${x.name}</b><div>₹${x.price.toLocaleString()} × ${x.qty}</div><button onclick="removeCart(${x.id})">Remove</button></div></div>`).join(''):'<div class="empty">Your cart is empty.</div>';document.getElementById('cartTotal').textContent='₹'+cart.reduce((s,x)=>s+x.price*x.qty,0).toLocaleString()}
+function removeCart(id){cart=cart.filter(x=>x.id!==id);updateCart()}
+function openCart(){document.getElementById('cartOverlay').style.display='block';updateCart()}function closeCart(){document.getElementById('cartOverlay').style.display='none'}
+function checkout(){if(!cart.length)return alert('Your cart is empty.');openModal('checkout')}
+function openModal(type){let c={search:`<h2>Search</h2><input autofocus placeholder="Search footwear…" oninput="quickSearch(this.value)"><div id="quick"></div>`,login:`<h2>Welcome back</h2><p>Login to manage orders and wishlist.</p><input placeholder="Email address"><input type="password" placeholder="Password"><button class="btn" style="width:100%">LOGIN</button><p style="font-size:13px">New here? Create your account after checkout.</p>`,about:`<h2>About Make Stylish</h2><p>Make Stylish is a modern footwear destination for men, women and kids. We focus on comfortable silhouettes, everyday versatility and trend-led design.</p>`,contact:`<h2>Contact Us</h2><p>Email: goyalkomal816@gmail.com</p><p>Phone: 9997786223</p><textarea rows="5" placeholder="Your message"></textarea><button class="btn">SEND MESSAGE</button>`,orders:`<h2>My Orders</h2><div class="empty">Login to view your orders.</div>`,wishlist:`<h2>Wishlist</h2><div class="empty">Your wishlist is empty.</div>`,shipping:`<h2>Shipping & Returns</h2><p>Free shipping above ₹999. Standard delivery is typically 3–7 business days. Eligible products can be returned within 7 days in unused condition.</p>`,checkout:`<h2>Checkout</h2><input placeholder="Full name"><input placeholder="Phone number"><input placeholder="Delivery address"><input placeholder="City / PIN code"><select style="width:100%;padding:12px;margin:7px 0 15px"><option>Cash on Delivery</option><option>UPI / Card</option></select><button class="btn" style="width:100%" onclick="placeOrder()">PLACE ORDER</button>`}[type];document.getElementById('modalContent').innerHTML=c;document.getElementById('modal').style.display='grid'}
+function closeModal(){document.getElementById('modal').style.display='none'}function quickSearch(v){let a=products.filter(p=>p.name.toLowerCase().includes(v.toLowerCase()));document.getElementById('quick').innerHTML=a.map(p=>`<p onclick="closeModal();openProduct(${p.id})" style="cursor:pointer">${p.name} — ₹${p.price}</p>`).join('')}
+function placeOrder(){cart=[];updateCart();closeModal();closeCart();alert('Order placed successfully! This is a frontend demo.')}
+function toggleWish(e,id){e.stopPropagation();e.target.textContent=e.target.textContent==='♡'?'♥':'♡'}
+renderHome();renderShop();updateCart();
+</script><script>
+// Persistent store layer
+const STORE_KEY='ms_store_v2';
+const seed={user:null,wishlist:[],cart:[],orders:[],stock:{}};
+let store=JSON.parse(localStorage.getItem(STORE_KEY)||'null')||seed;
+products.forEach(p=>{if(store.stock[p.id]==null)store.stock[p.id]=12});
+function save(){localStorage.setItem(STORE_KEY,JSON.stringify(store))}
+function stockOf(id){return Number(store.stock[id]||0)}
+function updateCart(){document.getElementById('cartCount').textContent=store.cart.reduce((s,x)=>s+x.qty,0);document.getElementById('cartItems').innerHTML=store.cart.length?store.cart.map(x=>`<div class="cartItem"><img src="${x.img}"><div style="flex:1"><b>${x.name}</b><div>₹${x.price.toLocaleString()} × ${x.qty}</div><div style="font-size:11px;color:#777">Stock: ${stockOf(x.id)}</div><div style="display:flex;gap:8px;margin-top:6px"><button onclick="cartQty(${x.id},-1)">−</button><button onclick="cartQty(${x.id},1)">+</button><button onclick="removeCart(${x.id})">Remove</button></div></div></div>`).join(''):'<div class="empty">Your cart is empty.</div>';document.getElementById('cartTotal').textContent='₹'+store.cart.reduce((s,x)=>s+x.price*x.qty,0).toLocaleString();save()}
+function cartQty(id,d){let x=store.cart.find(a=>a.id===id);if(!x)return;if(d>0&&x.qty>=stockOf(id))return alert('Maximum available stock reached.');x.qty+=d;if(x.qty<=0)removeCart(id);else updateCart()}
+function removeCart(id){store.cart=store.cart.filter(x=>x.id!==id);updateCart()}
+function addCurrent(){if(!current)return;let selected=document.querySelector('.size.selected');if(!selected)return alert('Please select a size.');if(stockOf(current.id)<qty)return alert('Not enough stock available.');let item=store.cart.find(x=>x.id===current.id);if(item)item.qty=Math.min(stockOf(current.id),item.qty+qty);else store.cart.push({...current,qty,size:selected.textContent});updateCart();alert('Added to cart!')}
+function buyNow(){addCurrent();openCart()}
+function toggleWish(e,id){e.stopPropagation();if(store.wishlist.includes(id))store.wishlist=store.wishlist.filter(x=>x!==id);else store.wishlist.push(id);save();e.target.textContent=store.wishlist.includes(id)?'♥':'♡'}
+function openModal(type){let c={search:`<h2>Search</h2><input autofocus placeholder="Search footwear…" oninput="quickSearch(this.value)"><div id="quick"></div>`,login:`<h2>${store.user?'Account':'Welcome to Make Stylish'}</h2>${store.user?`<p>Logged in as <b>${store.user.name}</b> (${store.user.email})</p><button class="btn" onclick="logout()">LOGOUT</button>`:`<input id="authName" placeholder="Full name"><input id="authEmail" placeholder="Email address"><input id="authPass" type="password" placeholder="Password"><button class="btn" style="width:100%" onclick="loginUser()">LOGIN / SIGN UP</button>`}`,about:`<h2>About Make Stylish</h2><p>Make Stylish is a modern footwear destination for men, women and kids. We focus on comfortable silhouettes, everyday versatility and trend-led design.</p>`,contact:`<h2>Contact Us</h2><p>Email: goyalkomal816@gmail.com</p><p>Phone: 9997786223</p><textarea rows="5" placeholder="Your message"></textarea><button class="btn">SEND MESSAGE</button>`,orders:`<h2>My Orders</h2>${renderOrders()}`,wishlist:`<h2>Wishlist</h2>${renderWishlist()}`,shipping:`<h2>Shipping & Returns</h2><p>Free shipping above ₹999. Standard delivery is typically 3–7 business days. Eligible products can be returned within 7 days in unused condition.</p>`,checkout:`<h2>Checkout</h2><input id="coName" placeholder="Full name" value="${store.user?.name||''}"><input id="coPhone" placeholder="Phone number"><input id="coAddress" placeholder="Delivery address"><input id="coCity" placeholder="City / PIN code"><select id="coPay" style="width:100%;padding:12px;margin:7px 0 15px"><option>Cash on Delivery</option><option>UPI / Card (Razorpay-ready)</option></select><div style="background:#f7f5f2;padding:12px;margin-bottom:15px"><b>Payable: ₹${store.cart.reduce((s,x)=>s+x.price*x.qty,0).toLocaleString()}</b></div><button class="btn" style="width:100%" onclick="placeOrder()">PLACE ORDER</button>`,admin:`<h2>Admin Dashboard</h2><p style="color:#777">Demo admin panel — manage inventory stored in this browser.</p>${products.map(p=>`<div style="display:flex;align-items:center;gap:10px;border-bottom:1px solid #eee;padding:10px 0"><img src="${p.img}" style="width:45px;height:50px;object-fit:cover"><div style="flex:1"><b>${p.name}</b><div style="font-size:12px">₹${p.price} · ${p.cat}</div></div><input type="number" min="0" value="${stockOf(p.id)}" style="width:75px;padding:8px" onchange="setStock(${p.id},this.value)"></div>`).join('')}`}[type];document.getElementById('modalContent').innerHTML=c;document.getElementById('modal').style.display='grid'}
+function loginUser(){let name=document.getElementById('authName').value.trim(),email=document.getElementById('authEmail').value.trim();if(!name||!email)return alert('Please enter name and email.');store.user={name,email};save();closeModal();alert('Welcome, '+name+'!')}
+function logout(){store.user=null;save();closeModal();alert('Logged out.')}
+function renderWishlist(){let a=products.filter(p=>store.wishlist.includes(p.id));return a.length?a.map(p=>`<p><b>${p.name}</b> — ₹${p.price.toLocaleString()} <button onclick="closeModal();openProduct(${p.id})">View</button></p>`).join(''):'<div class="empty">Your wishlist is empty.</div>'}
+function renderOrders(){if(!store.orders.length)return '<div class="empty">No orders yet.</div>';return store.orders.map(o=>`<div style="border:1px solid #eee;padding:15px;margin:10px 0"><b>${o.id}</b><div>${o.date}</div><div>${o.items.map(x=>x.name+' × '+x.qty).join(', ')}</div><strong>₹${o.total.toLocaleString()}</strong><div style="color:#777">${o.status}</div></div>`).join('')}
+function placeOrder(){if(!store.cart.length)return alert('Your cart is empty.');let name=document.getElementById('coName').value.trim(),phone=document.getElementById('coPhone').value.trim(),address=document.getElementById('coAddress').value.trim(),city=document.getElementById('coCity').value.trim();if(!name||!phone||!address||!city)return alert('Please complete your delivery details.');for(const x of store.cart){if(stockOf(x.id)<x.qty)return alert('Stock changed for '+x.name+'. Please update your cart.')}store.cart.forEach(x=>store.stock[x.id]-=x.qty);let total=store.cart.reduce((s,x)=>s+x.price*x.qty,0);store.orders.unshift({id:'MS'+Date.now().toString().slice(-8),date:new Date().toLocaleString('en-IN'),items:[...store.cart],total,status:'Order placed'});store.cart=[];save();updateCart();closeModal();alert('Order placed successfully! Order ID: '+store.orders[0].id+'\nPayment gateway is ready to connect with your Razorpay backend.')}
+function setStock(id,v){store.stock[id]=Math.max(0,Number(v));save();alert('Stock updated.')}
+function quickSearch(v){let a=products.filter(p=>p.name.toLowerCase().includes(v.toLowerCase()));document.getElementById('quick').innerHTML=a.map(p=>`<p onclick="closeModal();openProduct(${p.id})" style="cursor:pointer">${p.name} — ₹${p.price}</p>`).join('')}
+// Admin access shortcut: Ctrl+Shift+A
+window.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='a')openModal('admin')});
+</script></body></html>
