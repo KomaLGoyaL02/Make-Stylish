@@ -1,4 +1,4 @@
-# Make Stylish — Professional Footwear Store v3
+# Make Stylish — Professional Footwear Store 
 
 A clean, premium and simple-to-use responsive frontend for a footwear e-commerce store.
 
